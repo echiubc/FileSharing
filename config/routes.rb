@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   # GET /about
   get "about-us", to: "about#index", as: :about
 
-  get "password", to: "passwords#edit", as: :edit_password
-  patch "password", to: "passwords#update"
+  get "editpassword", to: "passwords#edit", as: :edit_password
+  patch "editpassword", to: "passwords#update"
 
   get "sign-up", to: "registrations#new", as: :signup
   post "users", to: "registrations#create"
