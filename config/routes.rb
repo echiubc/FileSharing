@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :posts
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # GET /about
   get "about-us", to: "about#index", as: :about
@@ -19,8 +20,8 @@ Rails.application.routes.draw do
   get "password/reset/edit", to: "password_resets#edit"
   patch "password/reset/edit", to: "password_resets#update"
 
-  get "upload", to: "upload#new"
-  post "upload", to: "upload#upload"
+  get "upload", to: "posts#index"
+
 
   root to: "main#index"
 end
