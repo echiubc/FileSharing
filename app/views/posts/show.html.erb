@@ -3,8 +3,10 @@
 <%= render @post %>
 
 <div>
-  <%= link_to "Edit this post", edit_post_path(@post) %> |
-  <%= link_to "Back to posts", posts_path %>
+  <%= link_to "Edit this post", edit_post_path(@post), class: "btn btn-primary" %> |
+  <%= link_to "Back to posts", posts_path, class: "btn btn-primary" %>
 
-  <%= button_to "Destroy this post", @post, method: :delete %>
+  <h1></h1>
+
+  <%= button_to "Destroy this post", @post, method: :delete, class: "btn btn-danger" %>
 </div>
