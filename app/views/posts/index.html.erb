@@ -1,6 +1,13 @@
-<p style="color: green"><%= notice %></p>
 
 <h1>Posts</h1>
+
+<% if @posts.any? %>
+  <% if @posts.count == 1 %>
+    1 Post
+  <% else %>
+    <%= @posts.count %> Posts
+  <% end %>
+<% end %> <br>
 
 <%= link_to "New post", new_post_path, class: "btn btn-primary" %>
 

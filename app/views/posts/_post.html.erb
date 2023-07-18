@@ -1,7 +1,8 @@
 <div id="<%= dom_id post %>">
   <p>
     <strong>
-    <h3><%= post.title %></h3>
+    <h3><%= post.file.filename %></h3>
+    <h5><%= post.file.created_at.strftime("%-d %b %Y %H:%M") %></h5>
     </strong>
   </p>
   <%= render "posts/attachment", post: post %>
