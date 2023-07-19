@@ -2,7 +2,9 @@
   <p>
     <strong>
     <h3><%= post.file.filename %></h3>
-    <h5><%= post.file.created_at.strftime("%-d %b %Y %H:%M") %></h5>
+    <% if post.file.created_at %>
+      <h5><%= post.file.created_at.strftime("%-d %b %Y %H:%M") %></h5>
+    <% end %>
     </strong>
   </p>
   <%= render "posts/attachment", post: post %>
