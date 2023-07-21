@@ -1,22 +1,29 @@
+<style>
+  #post-count {
+    font-size: 25px;
+  }
+</style>
 
-<h1>Posts</h1>
+<h1>Uploaded Files</h1>
+<div id="post-count">
+  <% if @posts.any? %>
+    <% if @posts.count == 1 %>
+      1 Upload
+    <% else %>
+      <%= @posts.count %> Uploads
+    <% end %>
+  <% end %> <br>
+</div>
 
-<% if @posts.any? %>
-  <% if @posts.count == 1 %>
-    1 Post
-  <% else %>
-    <%= @posts.count %> Posts
-  <% end %>
-<% end %> <br>
-
-<%= link_to "New post", new_post_path, class: "btn btn-primary" %>
+<%= link_to "New file", new_post_path, class: "btn btn-primary" %> 
+<br>
+<br>
 
 <div id="posts">
   <% @posts.each do |post| %>
-    <%= render post %> <br>
-    <p>
-      <%= link_to "Show this post", post, class: "btn btn-info" %>
-    </p>
+    <ul class="list-group">
+      <li class="list-group-item"><%= link_to post.file.filename, post%></li>
+    </ul>
   <% end %>
 </div>
 
