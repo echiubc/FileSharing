@@ -15,14 +15,19 @@
   <% end %> <br>
 </div>
 
-<%= link_to "New file", new_post_path, class: "btn btn-primary" %> 
+<%= link_to "New file", new_post_path, class: "btn btn-outline-primary" %> 
 <br>
 <br>
 
 <div id="posts">
   <% @posts.each do |post| %>
     <ul class="list-group">
-      <li class="list-group-item"><%= link_to post.file.filename, post%></li>
+      <li class="list-group-item">
+      <%= link_to post.file.filename, post%>
+      <% if post.file.created_at %>
+        <p><%= post.file.created_at.strftime("%-d %b %Y %H:%M") %></p>
+      <% end %>
+      <%= button_to "Delete file", @post, method: :delete, class: "btn btn-danger" %></li>
     </ul>
   <% end %>
 </div>
