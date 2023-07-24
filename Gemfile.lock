@@ -91,6 +91,10 @@ GEM
     erubi (1.12.0)
     globalid (1.1.0)
       activesupport (>= 5.0)
+    haml (6.1.1)
+      temple (>= 0.8.2)
+      thor
+      tilt
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     importmap-rails (1.2.1)
@@ -164,6 +168,10 @@ GEM
       thor (~> 1.0)
       zeitwerk (~> 2.5)
     rake (13.0.6)
+    ransack (4.0.0)
+      activerecord (>= 6.1.5)
+      activesupport (>= 6.1.5)
+      i18n
     regexp_parser (2.8.1)
     reline (0.3.6)
       io-console (~> 0.5)
@@ -183,7 +191,9 @@ GEM
     sqlite3 (1.6.3-x64-mingw-ucrt)
     stimulus-rails (1.2.1)
       railties (>= 6.0.0)
+    temple (0.10.2)
     thor (1.2.2)
+    tilt (2.2.0)
     timeout (0.4.0)
     turbo-rails (1.4.0)
       actionpack (>= 6.0.0)
@@ -218,10 +228,12 @@ DEPENDENCIES
   bootsnap
   capybara
   debug
+  haml (~> 6.1, >= 6.1.1)
   importmap-rails
   jbuilder
   puma (~> 5.0)
   rails (~> 7.0.5)
+  ransack (~> 4.0)
   selenium-webdriver
   sprockets-rails
   sqlite3 (~> 1.4)
