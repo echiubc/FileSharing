@@ -13,7 +13,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     if @post.user_id != Current.user.id
-      redirect_to posts_path, alert: "This file is not accessible."
+      redirect_to posts_path, alert: "This file either does not exist or you do not have permission to access it."
     end
   end
 
