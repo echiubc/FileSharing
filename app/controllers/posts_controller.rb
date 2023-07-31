@@ -4,7 +4,13 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
+
+    # Post.find(params[:user_id])
+    # currentUser = Current.user.id
+    # @posts = Post.find(currentUser)
+
     @posts = Post.all
+
   end
 
   # GET /posts/1 or /posts/1.json
@@ -22,7 +28,10 @@ class PostsController < ApplicationController
 
   # POST /posts or /posts.json
   def create
+    
     @post = Post.new(post_params)
+    @post.user = Current.user
+
 
     respond_to do |format|
       if @post.save
@@ -69,8 +78,6 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :file)
+      params.require(:post).permit(:title, :file, :user)
     end
 end
-
-
