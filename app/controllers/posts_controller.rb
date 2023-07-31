@@ -5,11 +5,7 @@ class PostsController < ApplicationController
   # GET /posts or /posts.json
   def index
 
-    # Post.find(params[:user_id])
-    # currentUser = Current.user.id
-    # @posts = Post.find(currentUser)
-
-    @posts = Post.all
+    @posts = Post.where(user_id: Current.user.id)
 
   end
 
