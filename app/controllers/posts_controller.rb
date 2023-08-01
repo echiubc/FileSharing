@@ -26,7 +26,8 @@ class PostsController < ApplicationController
   def edit
   end
 
-  def search 
+  def search
+    @posts = Post.where(filename: "search query") 
   end
 
   # POST /posts or /posts.json
@@ -34,6 +35,8 @@ class PostsController < ApplicationController
     
     @post = Post.new(post_params)
     @post.user = Current.user
+    @post.filename = @post.file.filename
+    
 
 
     respond_to do |format|
