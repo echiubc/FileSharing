@@ -15,26 +15,24 @@
   <% end %> <br>
 </div>
 
-<div class="input-group mb-3">
+<%
+=begin%>
+ <div class="input-group mb-3">
   <div class="input-group-prepend">
     <button class="btn btn-outline-secondary" type="button">Search</button>
   </div>
   <input type="text" class="form-control" placeholder="Search..." aria-label="" aria-describedby="basic-addon1">
-</div>
+</div> 
+<%
+=end%>
 
-<div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Filter - UI Concept
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">Pictures</a>
-    <a class="dropdown-item" href="#">PDFs</a>
-    <a class="dropdown-item" href="#">Office</a>
-    <a class="dropdown-item" href="#">Other</a>
-  </div>
-</div>
-<br>
+<%= form_tag posts_path, :method => "get" do %>
+  <%= label_tag(:search, "Search") %>
+  <%= text_field_tag :search, params[:search] %> 
+  <%= submit_tag("Search") %>
+<% end %>
 
+<br><br>
 <%= link_to "New file", new_post_path, class: "btn btn-outline-primary" %> 
 <br>
 <br>

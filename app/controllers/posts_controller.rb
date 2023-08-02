@@ -5,14 +5,16 @@ class PostsController < ApplicationController
   # GET /posts or /posts.json
   def index
 
-    @posts = Post.where(user_id: Current.user.id)
+    # @posts = Post.where(user_id: Current.user.id)
+
+    @posts = Post.search(params[:search])
 
   end
 
   # GET /posts/1 or /posts/1.json
   def show
     @post = Post.find(params[:id])
-    if @post.user_id != Current.user.id
+    if @post.nil? || @post.user_id != Current.user.id
       redirect_to posts_path, alert: "This file either does not exist or you do not have permission to access it."
     end
   end
@@ -27,8 +29,9 @@ class PostsController < ApplicationController
   end
 
   def search
-    @posts = Post.where(filename: "search query") 
+    
   end
+
 
   # POST /posts or /posts.json
   def create
@@ -79,11 +82,16 @@ class PostsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
-      @post = Post.find(params[:id])
+      @post = Post.find(params[:id]) # remove this when problem solved
+      if @post.nil? || @post.user_id != Current.user.id
+        redirect_to posts_path, alert: "This file either does not exist or you do not have permission to access it."
+      else
+        @post = Post.find(params[:id])
+      end
     end
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :file, :user)
+      params.require(:post).permit(:title, :file, :user, :search)
     end
 end
