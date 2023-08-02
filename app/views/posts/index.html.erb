@@ -15,19 +15,7 @@
   <% end %> <br>
 </div>
 
-<%
-=begin%>
- <div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <button class="btn btn-outline-secondary" type="button">Search</button>
-  </div>
-  <input type="text" class="form-control" placeholder="Search..." aria-label="" aria-describedby="basic-addon1">
-</div> 
-<%
-=end%>
-
 <%= form_tag posts_path, :method => "get" do %>
-  <%= label_tag(:search, "Search") %>
   <%= text_field_tag :search, params[:search] %> 
   <%= submit_tag("Search") %>
 <% end %>

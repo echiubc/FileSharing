@@ -11,8 +11,6 @@ class Post < ApplicationRecord
                 @posts = Post.all
             end
 
-            # @posts = Post.where(filename: search)
-
         else
             @posts = Post.all
         end
