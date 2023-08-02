@@ -6,13 +6,13 @@ class Post < ApplicationRecord
         if search
             post_search = Post.find_by(filename: search)
             if post_search
-                @posts = self.where(filename: search)
+                @posts = self.where(filename: search, user_id: Current.user.id)
             else
-                @posts = Post.all
+                @posts = self.where(user_id: Current.user.id)
             end
 
         else
-            @posts = Post.all
+            @posts = self.where(user_id: Current.user.id)
         end
     end
 end

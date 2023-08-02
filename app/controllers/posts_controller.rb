@@ -82,14 +82,9 @@ class PostsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
-      @post = Post.find(params[:id]) # remove this when problem solved
-      if @post.nil? || @post.user_id != Current.user.id
-        redirect_to posts_path, alert: "This file either does not exist or you do not have permission to access it."
-      else
-        @post = Post.find(params[:id])
-      end
+      @post = Post.find(params[:id])
+      
     end
-
     # Only allow a list of trusted parameters through.
     def post_params
       params.require(:post).permit(:title, :file, :user, :search)
