@@ -14,17 +14,19 @@
     <% end %>
   <% end %> <br>
 </div>
+<br>
 
-<%= form_tag posts_path, :method => "get" do %>
-  <%= text_field_tag :search, params[:search], placeholder: "Search..." %> 
-  <%= submit_tag("Search") %>
-<% end %>
-
-<br><br>
 <%= link_to "New file", new_post_path, class: "btn btn-outline-primary" %> 
 <br>
 <br>
-
+<%= form_tag posts_path, :method => "get" do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search...", class: "form-control" %> 
+  <%
+=begin%>
+ <%= submit_tag("Search") %> 
+<%
+=end%>
+<% end %> <br>  
 <div id="posts">
   <% @posts.each do |post| %>
     <ul class="list-group">
