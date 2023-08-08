@@ -24,22 +24,6 @@
 <%= form_tag posts_path, :method => "get" do %>
   <%= text_field_tag :search, params[:search], placeholder: "Search...", class: "form-control" %> 
 <% end %> <br>  
-<%
-=begin%>
- <div id="posts">
-  <% @posts.each do |post| %>
-    <ul class="list-group">
-      <li class="list-group-item">
-        <%= link_to post.file.filename, post%>
-        <% if post.file.created_at %>
-        <p><%= post.file.created_at.strftime("%-d %b %Y %H:%M") %></p>
-        <% end %>
-      </li>
-    </ul>
-  <% end %>
-</div> 
-<%
-=end%>
 
 <table class="table">
   <thead>
