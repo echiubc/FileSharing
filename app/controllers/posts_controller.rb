@@ -79,6 +79,7 @@ class PostsController < ApplicationController
       @post = Post.find(params[:id])
       rescue ActiveRecord::RecordNotFound
         redirect_to posts_path, alert: "This post is unavailable."
+      
     end
 
     # Only allow a list of trusted parameters through.
