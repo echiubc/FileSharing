@@ -15,7 +15,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     if @post.nil? || @post.user_id != Current.user.id
-      redirect_to posts_path, alert: "This file either does not exist or you do not have permission to access it."
+      redirect_to posts_path, alert: "This post is unavailable."
     end
   end
 
@@ -77,6 +77,8 @@ class PostsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = Post.find(params[:id])
+      rescue ActiveRecord::RecordNotFound
+        redirect_to posts_path, alert: "This post is unavailable."
     end
 
     # Only allow a list of trusted parameters through.
