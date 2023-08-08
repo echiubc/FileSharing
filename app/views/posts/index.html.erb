@@ -12,22 +12,21 @@
     <% else %>
       <%= @posts.count %> Files
     <% end %>
+  <% else %>
+    0 Files
   <% end %> <br>
 </div>
 <br>
 
-<%= link_to "New file", new_post_path, class: "btn btn-outline-primary" %> 
+<%= link_to "Upload", new_post_path, class: "btn btn-outline-primary" %> 
 <br>
 <br>
 <%= form_tag posts_path, :method => "get" do %>
   <%= text_field_tag :search, params[:search], placeholder: "Search...", class: "form-control" %> 
-  <%
-=begin%>
- <%= submit_tag("Search") %> 
-<%
-=end%>
 <% end %> <br>  
-<div id="posts">
+<%
+=begin%>
+ <div id="posts">
   <% @posts.each do |post| %>
     <ul class="list-group">
       <li class="list-group-item">
@@ -38,6 +37,29 @@
       </li>
     </ul>
   <% end %>
-</div>
+</div> 
+<%
+=end%>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>File Name</th>
+      <th>Created At</th>
+    </tr>
+  </thead>
+  <tbody class="table-group-divider">
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= link_to post.file.filename, post%></td>
+        <td>
+          <% if post.file.created_at %>
+            <p><%= post.file.created_at.strftime("%-d %b %Y %H:%M") %></p>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 
