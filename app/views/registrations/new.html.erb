@@ -4,7 +4,7 @@
     <% if form.object.errors.any? %>
         <div class = "alert alert-danger">
             <% form.object.errors.full_messages.each do |messages| %>
-                <div><%= message %></div>
+                <div><%= @message %></div>
             <% end %>
         </div>
     <% end %>
