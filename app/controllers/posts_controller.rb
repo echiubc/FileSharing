@@ -93,7 +93,7 @@ class PostsController < ApplicationController
 
     def validate_file_presence
       if params.dig(:post, :file).blank?
-        redirect_to posts_path, alert: "Post cannot be blank."
+        redirect_to new_post_path, alert: "Post cannot be blank."
       end
     end
 end

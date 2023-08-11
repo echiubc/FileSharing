@@ -9,7 +9,7 @@ class RegistrationsController < ApplicationController
             session[:user_id] = @user.id
             redirect_to posts_path, notice: "Account successfully created!"
         else
-            @message = "An account with this email already exists."
+            @message = "There was a problem creating your account."
             render :new
         end
     end

@@ -9,6 +9,7 @@ class PasswordsController < ApplicationController
             redirect_to root_path, notice: "Password updated!"
 
         else
+            @message = "Your passwords do not match."
             render :edit
         end
     end
