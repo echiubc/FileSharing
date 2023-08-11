@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
   before_action :require_user_logged_in!
+  before_action :validate_file_presence, only: [:create, :update]
 
   # GET /posts or /posts.json
   def index
@@ -44,6 +45,7 @@ class PostsController < ApplicationController
         format.json { render :show, status: :created, location: @post }
 
       else
+        
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
@@ -84,6 +86,14 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
+
       params.require(:post).permit(:title, :file, :user, :search)
+      
+    end
+
+    def validate_file_presence
+      if params.dig(:post, :file).blank?
+        redirect_to posts_path, alert: "Post cannot be blank."
+      end
     end
 end
