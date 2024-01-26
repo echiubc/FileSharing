@@ -11,3 +11,5 @@ class Post < ApplicationRecord
         end
     end
 end
+
+#test
