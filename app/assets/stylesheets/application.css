@@ -17,6 +17,10 @@
  
 
 body {
-    font-family: 'DM Sans', sans-serif;
-    background: linear-gradient(90deg, #5ba6ec, #9fcbf3);
+    font-family: Avenir, "Avenir Next", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background: linear-gradient(90deg, #ffe49f, #fffae2);
+    color: #01167d
  }
+.navbar {
+  background-color: #ff7e3d;
+}
